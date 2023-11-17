@@ -26,13 +26,15 @@ export default function CalendarSummary() {
   const [data, setData] = useState<CalendarSummaryDataType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const dayInMiliseconds = 24 * 60 * 60 * 1000;
-  const todayInMiliseconds = new Date().getTime();
-  const week = new Array(7)
-    .fill(null)
-    .map((_, index) => new Date(todayInMiliseconds + index * dayInMiliseconds));
-
   useEffect(() => {
+    const dayInMiliseconds = 24 * 60 * 60 * 1000;
+    const todayInMiliseconds = new Date().getTime();
+    const week = new Array(7)
+      .fill(null)
+      .map(
+        (_, index) => new Date(todayInMiliseconds + index * dayInMiliseconds),
+      );
+
     getTableEventData(week)
       .then((newData) => {
         setData(newData);
