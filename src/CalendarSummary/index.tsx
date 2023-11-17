@@ -54,6 +54,7 @@ export default function CalendarSummary() {
         bordered
         scroll={{ x: true }}
         loading={isLoading}
+        pagination={{ hideOnSinglePage: true }}
         summary={(currentData) => {
           if (currentData.length === 0) {
             return null;
